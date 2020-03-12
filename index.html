@@ -8,11 +8,26 @@
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
-
+		<link rel="stylesheet" href="css/theme/simple.css">
+	
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
 
+		<style type="text/css">
+			.reveal section img {
+				width:  50%; border: none; box-shadow: none;
+			}
+
+			.reveal section {
+				text-align: ;
+			}
+
+			mark {
+				background: #272822;
+				color: #a6e22e;
+				font-family: monospace;
+			}
+		</style>
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -25,8 +40,635 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section id="title-page">
+                    <h2>Javascript Part 2</h2>
+                    <h3>March 14, 2020</h3>
+                    <h4>BDPA High School Coding Competition</h4>
+                    <p>
+                        Wifi: BDPA-HSCC<br>
+                        pass: bdpa-hscc<br>
+                        http://coding.com:3000
+                    </p>
+                </section>
+
+				<section id="topics">
+					<h3>Topics</h3>
+					<ul>
+						<li>Conditionally executing instructions</li>
+						<li>Instructions that repeat</li>
+						<li>Arrays</li>
+						<li>Objects</li>
+					<ul>
+				</section>
+
+				<section id="conditionals">
+					<h2>Conditionally executing instructions</h2>
+				</section>
+
+				<section id="conditionals-introduction">
+					<h3>Introduction</h3>
+					<p>
+						A conditional statement controls the order that statements are executed. A program can have more than one path of execution. The statements in a program will only execute if the condition is true.
+					</p>
+					<p>
+						Conditions Berta the Robot can test:
+					</p>
+
+					<pre><code data-trim>
+						frontIsClear();
+						facingNorth();
+						facingSouth();
+						facingEast();
+						facingWest();
+					</code></pre>
+				</section>
+
+				<section id="roboworld-program">
+					<h3>RoboWorld Program</h3>
+					<a href="downloads/programs.zip" download>Download Files</a>
+				</section>
+
+				<section id="if-statement">
+					<h3>if-then statement</h3>
+					<pre><code data-trim>
+						if (condition) {
+							//statements to be executed if the condition is true
+						}
+					</code></pre>
+					<p>Example:</p>
+					<pre><code data-trim>
+						if (facingEast()) {
+							move();
+						}
+					</code></pre>
+				</section>
+
+				<section id="if-else-statement">
+					<h3>if-else statement</h3>
+					<pre><code data-trim>
+						if (condition) {
+							//statements to execute if condition is true
+						} else {
+							//statements to execute if the condition is false
+						}
+					</code></pre>
+					<p>Example:</p>
+					<pre><code data-trim>
+						if (facingNorth()) {
+							move();
+						} else {
+							turnLeft();
+						}
+					</code></pre>
+				</section>
+
+				<section id="if-elseif-else-statement">
+					<h3>if-else if-else statement</h3>
+					<pre><code data-trim>
+						if (condition1) {
+							//executed if condition1 is true
+						} else if (condition2) {
+							//executed if condition1 is 
+							//false and condition2 is true
+						} else {
+							//executed if condition1 and 
+							//condition2 are false
+					</code></pre>
+					<p>Example:</p>
+					<pre><code data-trim>
+						if (facingNorth()) {
+							move();
+						} else if (facingEast()) {
+							turnLeft();
+							move();
+						} else {
+							turnLeft();
+							turnLeft();
+						}
+					</code></pre>
+				</section>
+
+				<section id="comparison-operators">
+					<h3>Comparison operators</h3>
+					<p>
+						A comparison operator compares two values to each other. Expressions like x > y return true or false.  
+					</p>
+					<table>
+						<tr>
+							<td>== </td>
+							<td>x == y</td>
+							<td>Is x equal to y?</td>
+						</tr>
+						<tr>
+							<td>!=</td>
+							<td>x != y</td>
+							<td>Is x not equal to y?</td>
+						</tr>
+						<tr>
+							<td>></td>
+							<td>x > y</td>
+							<td>Is x greater than y?</td>
+						</tr>
+						<tr>
+							<td><</td>
+							<td>x < y</td>
+							<td>Is x less than y?</td>
+						</tr>
+						<tr>
+							<td>>=</td>
+							<td>x >= y</td>
+							<td>Is x greater than or equal to y?<td>
+						</tr>
+						<tr>
+							<td><=</td>
+							<td>x <= y</td>
+							<td>Is x less than or equal to y?
+						</tr>
+					</table>
+				</section>
+
+				<section id="grade-calculator-program">
+					<h3>Grade Calculator Program</h3>
+					<p>in Getting Started folder</p>
+				</section>
+
+				<section id="grade-calculator-instructions">
+					<h3>Instructions</h3>
+					<p>
+						Define a function named <mark>calculateGrade()</mark> that has a parameter named score and prints the letter grade to the console. If the score is greater than or equal to 90, the program should print ‘A’. If the score is greater than or equal to 85, print ‘B’. If the score is greater than or equal to 75, print ‘C’. If the score is greater than or equal to 65, print ‘D’. Otherwise, print ‘F’. For example, <mark>calculateGrade(80)</mark> prints ‘C’.
+
+					</p>
+				</section>
+
+				<section id="grade-calculator-answer">
+					<h3>Answer</h3>
+					<pre><code data-trim>
+						function calculateGrade(score) {
+							if (score >= 90) {
+								console.log('A');
+							} else if (score >= 85) {
+								console.log('B');
+							} else if (score >= 75) {
+								console.log('C');
+							} else if (score >= 65) {
+								console.log('D');
+							} else {
+								console.log('F');
+							}
+						}
+					</code></pre>
+				</section>
+
+				<section id="repeating-instructions">
+					<h3>Repeating Instructions</h3>
+				</section>
+
+				<section id="for-statements">
+					<h3>for statements</h3>
+					<p>
+						A for loop is used when you know in advance how many times you want to repeat an instruction.
+					</p>
+					<pre><code data-trim>
+						for (initial; condition; step) {
+							//statements to be repeated
+						}
+					</code></pre>
+					<p>
+						Example:
+					</p>
+					<pre><code data-trim>
+						for (i = 0; i < 5; i++) {
+							console.log(i);
+						}
+					</code></pre>
+				</section>
+
+				<section id="program5-1">
+					<h3>Program 5.1</h3>
+					<p>
+						Using a for loop, what are the instructions to move the robot three steps?
+					</p>
+					<p style="width: 40%; text-align: left; float:left">
+						Commands:<br>
+						<mark>			
+							move();<br>
+							turnLeft();<br>
+							putGold();
+						</mark>
+					</p>
+					<img src="img/program1.1.png" style="width:60%; float:right">
+				</section>
+
+				<section id="answer-program5-1">
+					<h3>Answer</h3>
+					<pre><code data-trim>
+						for (i = 0; i < 3; i++) {
+							move();
+						}
+					</code></pre>
+				</section>
+
+				<section id="exercise1">
+					<h3>Exercise</h3>
+					<p>
+						Write a for loop that prints the numbers 1-10 to the console.
+					</p>
+				</section>
+
+				<section id="answer1">
+					<h3>Answer</h3>
+					<pre><code data-trim>
+						for (i = 1; i < 11; i++) {
+							console.log(i);
+						}
+					</code></pre>
+					<p>Or:</p>
+					<pre><code data-trim>
+						for (i = 1; i <= 10; i++) {
+							console.log(i);
+						}
+					</code></pre>
+				</section>
+
+				<section id="while-statements">
+					<h3>while statements</h3>
+					<p>
+						A while loop is more general and is used when you want to execute instructions while some condition is true.
+					</p>
+					<pre><code data-trim>
+						while (condition) {
+							//statements to be repeated
+						}
+					</code></pre>
+
+					<p>Example:</p>
+
+					<pre><code data-trim>
+						let i = 0;
+						while (i < 5) {
+							console.log(i);
+							i++;
+						}
+					</code></pre>
+				</section>
+
+				<section id="program5-2">
+					<h3>Program 5.2</h3>
+					<p>
+						Using the commands and conditions that Berta knows, how would you move the robot three steps using a while loop?
+					</p>
+					<p style="width: 50%; text-align: left; float:left">
+						Commands:<br>
+						<mark>
+							move();<br>
+							turnLeft();<br>
+							putGold();
+						</mark>
+					</p>
+					<p style="width: 50%; text-align: left; float: right">
+						Conditions:<br>
+						<mark>
+							frontIsClear();<br>
+							facingNorth();<br>
+							facingSouth();<br>
+							facingEast();<br>
+							facingWest();
+						</mark>
+					</p>
+				</section>
+
+				<section id="answer-program5-2">
+					<h3>Answer</h3>
+					<pre><code data-trim>
+						while (frontIsClear()) {
+							move();
+						}
+					</code></pre>
+				</section>
+
+				<section id="exercise2">
+					<h3>Exercise</h3>
+					<p>
+						Write a while loop that prints the numbers 1-10.
+					</p>
+				</section>
+
+				<section id="answer2">
+					<h3>Answer</h3>
+					<pre><code data-trim>
+						let i = 1;
+						while(i < 11) {
+							console.log(i);
+							i++;
+						}
+					</code></pre>
+					<p>Or:</p>
+					<pre><code data-trim>
+						let i = 1;
+						while(i <= 10) {
+							console.log(i);
+							i++;
+						}
+					</code></pre>
+				</section>
+
+				<section id="arrays">
+					<h3>Arrays</h3>
+				</section>
+
+				<section id="creating-an-array">
+					<h3>Creating an array</h3>
+					<p>
+						An array is a container that can hold a list of items. Each item in the array is called an element. You can create an array using two brackets. 
+					</p>
+					<pre><code data-trim>
+						let arrayName = []
+					</code></pre>
+					<p>Example:</p>
+					<pre><code data-trim>
+						let names = [];
+					</code></pre>
+					<p>
+						You can also initialize an array with values. For example:
+					</p>
+					<pre><code data-trim>
+						let names = ["Berta", "Jane", "John"];
+					</code></pre>
+				</section>
+
+				<section id="exercise3">
+					<h3>Exercise</h3>
+					<p>
+						Create an array with four song titles and assign it to a variable named songs. Print the array to the console.
+					</p>
+				</section>
+
+
+				<section id="accessing-array-elements">
+					<h3>Accessing elements in an array</h3>
+					<p>
+						Elements in an array are accessed by their index. The index is the position of the element in the array and begins at 0. 
+					</p>
+					<pre><code data-trim>
+						arrayName[index]
+					</code></pre>
+					<p>Example</p>
+					<pre><code data-trim>
+						let names = ["Berta", "Jane", "John"];
+					</code></pre>
+					<p>
+						The value of <mark>names[0]</mark> is Berta.
+					</p>
+				</section>
+
+				<section id="exercise4">
+					<h3>Exercise</h3>
+					<p>
+						Print to the console the first element and the last element in your array of songs.
+					</p>
+				</section>
+
+				<section id="modifying-arrays">
+					<h3>Modifying arrays</h3>
+					<pre><code data-trim>
+						arrayName[index] = value
+					</code></pre>
+					<p>Example:</p>
+					<pre><code data-trim>
+						let names = ["Berta", "Jane", "John"];
+						names[0] = "Robot";
+						console.log(names);	//displays ["Robot", "Jane", "John"]
+					</code></pre>
+				</section>
+
+				<section id="exercise5">
+					<h3>Exercise</h3>
+					<p>
+						Change the value of the second song in your array and print the array to the console.
+					</p>
+				</section>
+
+				<section id="array-methods">
+					<h3>Array Methods</h3>
+					<p>
+						Array length:<br>
+						<mark>names.length;</mark>
+					</p>
+					<p>
+						Add element to end of array:<br>
+						<mark>names.push(“Berta”);</mark>
+					</p>
+					<p>
+						Remove element from end of array:<br>
+						<mark>names.pop();</mark>
+					</p>
+				</section>
+
+				<section id="exercise6">
+					<h3>Exercise</h3>
+					<p>
+						Print the length of your songs array.
+						Add a new song title to the end of your songs array. Print the array to the console.
+						Remove the last element from your songs array. Print the array to the console.
+					</p>
+				</section>
+
+				<section id="looping-arrays">
+					<h3>Looping through an array</h3>
+					<pre><code data-trim>
+						for (i = 0; i < names.length; i++) {
+							console.log(names[i]);
+						}
+					</code></pre>
+				</section>
+
+				<section id="exercise7">
+					<h3>Exercise</h3>
+					<p>
+						Loop through your songs array and print each song to the console.
+					</p>
+				</section>
+
+				<section id="objects">
+					<h3>Objects</h3>
+				</section>
+
+				<section id="creating-objects">
+					<h3>Creating an object</h3>
+					<p>
+						An object is a container for storing data that has two parts: a name and a value. A name-value pair is called a property.  You use the name to locate a value.
+
+						You can create an empty object with two curly braces.
+					</p>
+
+					<pre><code data-trim>
+						let person = {};
+					</code></pre>
+					<p>
+						You can also initialize an object with properties in it.
+					</p>
+					<pre><code data-trim>
+						let person = {
+							first: "Berta",
+							last: "the Robot"
+						};
+					</code></pre>
+				</section>
+
+				<section id="exercise8">
+					<h3>Exercise</h3>
+					<p>
+						Create an object named song that contains the title and artist of your favorite song. Print the object to the console.
+					</p>
+				</section>
+
+				<section id="accessing-object-properties">
+					<h3>Accessing object properties</h3>
+					<p>
+						First method:<br>
+						objectName.propertyName
+					</p>
+
+					<p>
+						Example:<br>
+						<mark>person.first;</mark>
+					</p>
+					<p>
+						Second method:<br>
+						objectName["propertyName"]
+					</p>
+					<p>
+						Example:<br>
+						<mark>person["first"];</mark>
+					</p>
+				</section>
+
+				<section id="exercise9">
+					<h3>Exercise</h3>
+					<p>
+						Print the title from your song object to the console.
+					</p>
+				</section>
+
+				<section id="modifying-objects">
+					<p>
+						First method:<br>
+						objectName.propertyName = value<br><br>
+
+						Example:<br>
+						<mark>person.first = "Jane";</mark><br><br>
+
+						Second method:<br>
+						objectName["propertyName"] = value<br><br>
+
+						Example:<br>
+						<mark>person["first"] = "Jane";</mark>
+					</p>
+				</section>
+
+				<section id="exercise10">
+					<h3>Exercise</h3>
+					<p>
+						Change the value of the title and artist in your song object. Print the object to the console.
+					</p>
+				</section>
+
+				<section id="adding-properties-objects">
+					<h3>Adding properties to an object</h3>
+					<p>
+						First method:<br>
+						objectName.newPropertyName = value<br><br>
+
+						Example:<br>
+						<mark>person.age = 99;</mark><br><br>
+
+						Second method:<br>
+						objectName["newPropertyName"] = value<br><br>
+
+						Example:<br>
+						<mark>person["age"] = 99;<mark>
+					</p>
+				</section>
+
+				<section id="exercise11">
+					<h3>Exercise</h3>
+					<p>
+						Add a genre property to your song object. Print the object to the console.
+					</p>
+				</section>
+
+				<section id="looping-objects">
+					<h3>Looping through an object</h3>
+					<p>
+						You use a for-in loop to loop through the properties in an object.
+					</p>
+					<pre><code data-trim>
+						for (propertyName in object) {
+							console.log(object[propertyName]);
+						}
+					</code></pre>
+					<p>Example:</p>
+					<pre><code data-trim>
+						for (prop in person) {
+							console.log(person[prop]);
+						}
+					</code></pre>
+
+					<p>
+						You must use bracket notation when accessing property values in the loop.
+					</p>
+				</section>
+
+				<section id="exercise12">
+					<h3>Exercise</h3>
+					<p>
+						Loop through your song object and print the value of each property.
+					</p>
+				</section>
+
+				<section id="exercise13">
+					<h3>Exercise</h3>
+					<p>
+						Create an array of song objects that have a title, artist, and genre. Then loop through the array and print the value of the title, artist, and genre.
+					</p>
+				</section>
+
+				<section id="counter-program">
+					<h3>Counter Program</h3>
+					<p>
+						Create a program that displays a number on the screen. The number is increased by one when the plus button is clicked. And the number is decreased by one when the minus button is clicked. The count should not go below 0 or above 10.
+					</p>
+				</section>
+
+				<section id="counter-instructions">
+					<h3>Instructions</h3>
+					<ol>
+						<li>Get the count element and save it to a variable named count. (Hint: use <mark>getElementById()</mark>)</li>
+						<li>Get the plus button element and save it to a variable named btnPlus.</li>
+						<li>Add a click event listener to the plus button.</li>
+						<li>Inside the click listener parse the inner text of the count element into an integer and save to a variable named current. (Hint: use <mark>parseInt()</mark>)</li>
+						<li>Increment current by one if it is less than 10.</li>
+						<li>Set the inner text of the count element to current.</li>
+						<li> Repeat steps 2-6 for the minus button.</li>
+					</ol>
+				</section>
+
+				<section id="counter-answer">
+					<h3>Partial Answer</h3>
+					<pre><code data-trim>
+						const count = document.getElementById('count');
+						const btnPlus = document.getElementById('btn-plus');
+						const btnMinus = document.getElementById('btn-minus');
+
+						btnPlus.addEventListener('click', function() {
+						  current = parseInt(count.innerText);
+						  if (current < 10) {
+						    current++;
+						  }
+						  count.innerText = current;
+						});
+					</code></pre>
+				</section>
 			</div>
 		</div>
 
