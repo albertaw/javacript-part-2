@@ -496,7 +496,8 @@
 				<section id="creating-objects">
 					<h3>Creating an object</h3>
 					<p>
-						An object is a container for storing data that has two parts: a name and a value. A name-value pair is called a property.  You use the name to locate a value.
+						An object is a container for storing data that has two parts: a key and a value. A key-value pair is called a property. The key is the name of the property and is used to get the value.
+
 
 						You can create an empty object with two curly braces.
 					</p>
@@ -609,8 +610,8 @@
 					</code></pre>
 					<p>Example:</p>
 					<pre><code data-trim>
-						for (prop in person) {
-							console.log(person[prop]);
+						for (key in person) {
+							console.log(person[key]);
 						}
 					</code></pre>
 
